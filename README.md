@@ -235,5 +235,5 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ---
 
-## ** Happy Gaming!**
+## ** May the best one win!**
 ```
