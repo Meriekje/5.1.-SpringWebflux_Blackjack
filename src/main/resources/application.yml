@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: blackjack-reactive
+
+  # MongoDB Reactive Configuration
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/blackjack
+      database: blackjack
+
+  # R2DBC MySQL Configuration (NO datasource!)
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/blackjack_mysql
+    username: root
+    password: password
+    pool:
+      initial-size: 5
+      max-size: 20
+      max-idle-time: 30m
+
+# Configuració per executar scripts SQL
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:blackjack.sql
+      continue-on-error: false
+
+# Swagger Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+# Logging
+logging:
+  level:
+    cat.itacademy.s05.t01.n01.BLACKJACK: DEBUG
+    org.springframework.data.mongodb: DEBUG
+    org.springframework.r2dbc: DEBUG
+    io.r2dbc.mysql: DEBUG
+    org.springframework.sql.init: DEBUG # Per veure l'execució dels scripts
